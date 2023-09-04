@@ -24,6 +24,9 @@ console.log('lesson 2');
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
 
+const sum = (num1: number) => (num2: number) => num1 + num2
+
+
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
 // const counter = makeCounter();
@@ -33,6 +36,11 @@ console.log('lesson 2');
 // counter2(); // 1
 // counter(); // 3
 
+const makeCounter = () => {
+    let count = 1;
+    return () => count++
+}
+
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
 // и возвращала следующий объект методов:
@@ -40,6 +48,16 @@ console.log('lesson 2');
 // decrease: -1
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
+
+const makeCounterImproved = (value: number) => {
+    let count = value;
+    return {
+        increase: ()=>++count,
+        decrease: ()=>--count,
+        reset: ()=>count=0,
+        set: (newValue: number)=>count=newValue,
+    }
+}
 
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
@@ -56,8 +74,24 @@ console.log('lesson 2');
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
+const sumTo = (value: number): number => {
+    if(value===1) return 1
+    return value + sumTo(value-1)
+}
+
+const factorial = (value: number): number => {
+    if(value===1) return 1
+    return value * factorial(value-1)
+}
+
+const fib = (value: number): number => {
+    if(value<=2) return 1
+    return fib(value-1)+fib(value-2)
+}
+
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
 // just a plug
-export default () => {};
+export default () => {
+};
